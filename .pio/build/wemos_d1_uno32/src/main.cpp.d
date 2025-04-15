@@ -194,8 +194,17 @@
  C:/Users/MY\ LAPTOP/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src/WiFiUdp.h \
  C:/Users/MY\ LAPTOP/.platformio/packages/framework-arduinoespressif32/cores/esp32/Udp.h \
  C:/Users/MY\ LAPTOP/.platformio/packages/framework-arduinoespressif32/cores/esp32/cbuf.h \
- C:/Users/MY\ LAPTOP/.platformio/packages/framework-arduinoespressif32/libraries/SPIFFS/src/SPIFFS.h \
+ lib/ESPAsyncWebServer/src/ESPAsyncWebServer.h \
  C:/Users/MY\ LAPTOP/.platformio/packages/framework-arduinoespressif32/libraries/FS/src/FS.h \
+ lib/AsyncTCP/src/AsyncTCP.h \
+ C:/Users/MY\ LAPTOP/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/lwip/lwip/src/include/lwip/pbuf.h \
+ lib/ESPAsyncWebServer/src/literals.h \
+ lib/ESPAsyncWebServer/src/AsyncEventSource.h \
+ lib/ESPAsyncWebServer/src/AsyncWebSocket.h \
+ lib/ESPAsyncWebServer/src/WebHandlerImpl.h \
+ lib/ESPAsyncWebServer/src/WebResponseImpl.h \
+ C:/Users/MY\ LAPTOP/.platformio/packages/framework-arduinoespressif32/cores/esp32/StreamString.h \
+ C:/Users/MY\ LAPTOP/.platformio/packages/framework-arduinoespressif32/libraries/SPIFFS/src/SPIFFS.h \
  lib/DHT20/DHT20.h \
  C:/Users/MY\ LAPTOP/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src/Wire.h \
  C:/Users/MY\ LAPTOP/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal.h \
@@ -248,8 +257,9 @@
  lib/ThingsBoard/src/IAPI_Implementation.h \
  lib/ThingsBoard/src/DefaultLogger.h \
  lib/ThingsBoard/src/API_Process_Type.h \
+ lib/TBPubSubClient/src/PubSubClient.h \
  lib/ThingsBoard/src/Arduino_MQTT_Client.h \
- lib/ThingsBoard/src/IMQTT_Client.h lib/TBPubSubClient/src/PubSubClient.h \
+ lib/ThingsBoard/src/IMQTT_Client.h \
  lib/ThingsBoard/src/OTA_Firmware_Update.h \
  lib/ThingsBoard/src/Attribute_Request.h \
  lib/ThingsBoard/src/Shared_Attribute_Update.h \

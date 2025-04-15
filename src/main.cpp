@@ -1,22 +1,25 @@
 // Import required libraries
 #include "WiFi.h"
-// #include "ESPAsyncWebServer.h"
+#include "ESPAsyncWebServer.h"
 #include "SPIFFS.h"
 #include "DHT20.h"
-// #include "freertos/FreeRTOS.h"
-// #include "freertos/task.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 #include <ArduinoJson.h>
 #include <WiFi.h>
 #include <Arduino.h>
 #include <WiFiClientSecure.h>
 #include <Attribute_Request.h>
-
-
+#include <PubSubClient.h>
 #include <Arduino_MQTT_Client.h>
 #include <OTA_Firmware_Update.h>
 #include <ThingsBoard.h>
 
 #include <Espressif_Updater.h>
+
+WiFiClient espClient;
+PubSubClient client(espClient);
+AsyncWebServer server(80);
 
 void processSharedAttributeUpdate(const JsonObjectConst &data)
 {
@@ -169,18 +172,18 @@ void progress_callback(const size_t & current, const size_t & total) {
   Serial.printf("Progress %.2f%%\n", static_cast<float>(current * 100U) / total);
 }
 
-// void connectMQTT() {
-//   while (!client.connected()) {
-//     Serial.println("Connecting...");
-//     if (client.connect("ESP32Client", ACCESS_TOKEN, NULL)) {
-//       Serial.println("MQTT connect successfully!");
-//     } else {
-//       Serial.print("Failed to connect");
-//       Serial.println(client.state());
-//       delay(2000);
-//     }
-//   }
-// }
+ void connectMQTT() {
+   while (!client.connected()) {
+     Serial.println("Connecting...");
+    if (client.connect("ESP32Client", ACCESS_TOKEN, NULL)) {
+       Serial.println("MQTT connect successfully!");
+     } else {
+       Serial.print("Failed to connect");
+       Serial.println(client.state());
+       delay(2000);
+     }
+   }
+ }
 
 // Hàm gửi dữ liệu lên CoreIOT
 void sendDataToCoreIOT() {
@@ -267,22 +270,22 @@ void taskOTA(void* pvParameters){
 void setup() {
   Serial.begin(115200);
   InitWiFi();
-  // delay(7000);
+   delay(7000);
   Wire.begin();
-  // if (!dht20.begin()) {
-  //   Serial.println("DHT20 is unavailable");
-  //   // while (true);
-  // }
-  // else Serial.println("DHT20 is available");
+   if (!dht20.begin()) {
+     Serial.println("DHT20 is unavailable");
+     // while (true);
+   }
+   else Serial.println("DHT20 is available");
 
   
   
-  // client.setServer(mqttServer, mqttPort);
-  // connectMQTT();
+   client.setServer(mqttServer, mqttPort);
+   connectMQTT();
 
-  // server.begin();
+   server.begin();
 
-  // xTaskCreate(readDHT20SensorTask, "ReadDHT20Sensor", 2048, NULL, 1, NULL);
+  xTaskCreate(readDHT20SensorTask, "ReadDHT20Sensor", 2048, NULL, 1, NULL);
   xTaskCreate(taskOTA, "taskOTA", 4096, NULL, 1, NULL);
 
 }
