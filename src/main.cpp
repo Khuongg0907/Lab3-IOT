@@ -69,11 +69,6 @@ const char* mqttServer = "app.coreiot.io";
 const int mqttPort = 1883;
 const char* ACCESS_TOKEN = "l8wfuphtuoy2fpe21lio";
 
-WiFiClient espClient;
-// PubSubClient client(espClient);
-const int ledPin = 13;
-// Stores LED state
-
 // Create AsyncWebServer object on port 80
 // AsyncWebServer server(80);
 DHT20 dht20;
